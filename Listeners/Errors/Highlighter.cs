@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using SVsServiceProvider = Microsoft.VisualStudio.Shell.SVsServiceProvider;
@@ -24,6 +25,7 @@ namespace Watcher
         private readonly IAdornmentLayer _adornmentLayer;
         private readonly SVsServiceProvider _serviceProvider;
         private readonly Dispatcher _dispatcher;
+        private readonly Timer _timer;
 
         public Highlighter(IWpfTextView view, ITextDocument document, IErrorList errorList, SVsServiceProvider serviceProvider)
         {
@@ -45,7 +47,21 @@ namespace Watcher
             _view.ViewportHeightChanged += SetAdornmentLocation;
             _view.ViewportWidthChanged += SetAdornmentLocation;
 
-            errorList.TableControl.EntriesChanged += TableControl_EntriesChanged;
+            _timer = new Timer(750);
+            _timer.Elapsed += (s, e) =>
+            {
+                _timer.Stop();
+
+                Task.Run(() =>
+                {
+                    _dispatcher.Invoke(new Action(() =>
+                    {
+                        Update(false);
+                    }), DispatcherPriority.ApplicationIdle, null);
+                });
+            };
+            _timer.Start();
+            //errorList.TableControl.EntriesChanged += TableControl_EntriesChanged;
         }
 
         public void Update(bool highlight)
@@ -59,6 +75,7 @@ namespace Watcher
             UpdateAdornment(highlight, entries);
 
             _processing = false;
+            _timer.Start();
         }
 
         private async void UpdateAdornment(bool highlight, ITableEntryHandle[] entries)
@@ -142,8 +159,11 @@ namespace Watcher
             if (_text != null)
                 _text.MouseUp -= text_MouseUp;
 
-            if (_errorList != null)
-                _errorList.TableControl.EntriesChanged -= TableControl_EntriesChanged;
+            if (_timer != null)
+                _timer.Stop();
+
+            //if (_errorList != null)
+            //    _errorList.TableControl.EntriesChanged -= TableControl_EntriesChanged;
         }
     }
 }

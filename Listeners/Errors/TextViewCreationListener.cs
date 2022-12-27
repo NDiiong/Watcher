@@ -9,7 +9,7 @@ namespace Watcher
 {
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("code")]
-    [TextViewRole(PredefinedTextViewRoles.Interactive)]
+    [TextViewRole(PredefinedTextViewRoles.PrimaryDocument)]
     internal sealed class TextViewCreationListener : IWpfTextViewCreationListener
     {
         public const string LayerName = "ErrorHighlighter";
@@ -39,7 +39,7 @@ namespace Watcher
                             highlighter.Update(true);
                     };
 
-                    textView.Closed += (s, e) => TextView_Closed(highlighter);
+                    //textView.Closed += (s, e) => TextView_Closed(highlighter);
                 }
             }
         }
