@@ -5,6 +5,7 @@
         <DisplayName>Error Watcher 2022</DisplayName>
         <Description xml:space="preserve">The easiest way you can the current error.
 This idea is from https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ErrorCatcher</Description>
+        <MoreInfo>https://github.com/nb-duong/Watcher</MoreInfo>
         <Icon>problem.png</Icon>
         <Tags>error, message, warning, error list</Tags>
         <Preview>true</Preview>
