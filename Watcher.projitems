@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6b458e3b-908c-4cdb-a583-b98470b15d1e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Watcher</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Listeners\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Listeners\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Listeners\errors\Adornment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Listeners\errors\Highlighter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Listeners\errors\TextViewCreationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Listeners\errors\ErrorResult.cs" />
+  </ItemGroup>
+</Project>
