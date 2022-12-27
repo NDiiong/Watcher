@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="027bc4ba-6ccb-4ec0-be10-4859010d17bd" Version="1.2022.1" Language="en-US" Publisher="nb.duong" />
+        <Identity Id="027bc4ba-6ccb-4ec0-be10-4859010d17bd" Version="1.2022.2" Language="en-US" Publisher="duong.nguyen" />
         <DisplayName>Error Watcher 2022</DisplayName>
-        <Description xml:space="preserve">The easiest way you can the current error.
-This idea is from https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ErrorCatcher</Description>
+        <Description xml:space="preserve">The easiest way you can the current errors.</Description>
         <MoreInfo>https://github.com/nb-duong/Watcher</MoreInfo>
         <Icon>problem.png</Icon>
         <Tags>error, message, warning, error list</Tags>
