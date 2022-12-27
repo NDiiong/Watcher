@@ -16,7 +16,7 @@ namespace Watcher
 {
     internal class Highlighter : IDisposable
     {
-        private static bool _processing;
+        private bool _processing;
         private readonly Adornment _text;
         private readonly IWpfTextView _view;
         private readonly ITextDocument _document;
